@@ -1,0 +1,3 @@
+#!/bin/sh
+
+SUDO_ASKPASS=$HOME/.bin/dmn_pass sudo -A $(dmenu_path | dmenu -p "Run as root:")

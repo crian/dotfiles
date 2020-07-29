@@ -1,0 +1,23 @@
+#!/bin/sh
+
+DIALOG_RESULT=$(printf "lock\nlogout\nreboot\npoweroff\nexit" | dmenu -i -f -p "Power:" )
+
+echo "This result is : $DIALOG_RESULT"
+sleep 1;
+
+if [ "$DIALOG_RESULT" = "lock" ];
+then
+    exec slock
+elif [ "$DIALOG_RESULT" = "logout" ];
+then
+    exec pkill -KILL -u $USER
+elif [ "$DIALOG_RESULT" = "reboot" ];
+then
+    exec systemctl reboot
+elif [ "$DIALOG_RESULT" = "poweroff" ];
+then
+    exec systemctl poweroff
+elif [ "$DIALOG_RESULT" = "exit" ];
+then
+    exit 0
+fi

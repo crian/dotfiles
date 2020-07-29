@@ -1,0 +1,7 @@
+#!/bin/sh
+
+wall=$HOME/.cache/wall
+
+[ "$1" ] && cp "$1" $wall && notify-send -i "$wall" "Wallpaper set"
+
+xwallpaper --zoom $wall

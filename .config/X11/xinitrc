@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# merge xresources
+xrdb -merge ~/.config/X11/Xresources
+
+# remap caps to esc
+setxkbmap -option caps:escape
+
+# set cursor
+xsetroot -cursor_name left_ptr
+
+# increase key repeat rate
+xset r rate 250 30
+
+# set wallpaper
+setwall &
+
+# notification daemon
+dunst &
+
+# start compositor
+picom &
+
+# hide mouse when typing
+xbanish &
+
+# clipboard manager
+clipmenud &
+
+# start xautolock with slock
+xautolock -time 30 -locker slock &
+
+# start wm
+#exec bspwm 2> ~/.cache/bspwm.log
+exec yaxwm
+#exec ~/.local/src/yaxwm/yaxwm > ~/.local/share/xorg/yaxwm.log 2>&1

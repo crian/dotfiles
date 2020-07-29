@@ -1,0 +1,15 @@
+#!/bin/sh
+
+mute="$(pulsemixer --get-mute)"
+vol="$(pulsemixer --get-volume | awk '{print $1}')"
+if [ $mute = 1 ]; then
+    printf "^c#8ec07c^ ^d^Muted"
+elif [ $mute = 0 ]; then
+    case ${vol%?} in
+           10) i='' ;;
+        [6-9]) i='' ;;
+        [3-5]) i='' ;;
+            *) i=''
+    esac
+    printf "%s%%\n" "^c#689d6a^$i^d^ $vol"
+fi

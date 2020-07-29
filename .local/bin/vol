@@ -1,0 +1,13 @@
+#!/bin/sh
+
+mute() { pulsemixer --toggle-mute ;}
+up() { pulsemixer --change-volume +5 --unmute ;}
+down() { pulsemixer --change-volume -5 --unmute ;}
+
+case "$1" in
+	mute) mute ;;
+	up) up ;;
+	down) down ;;
+esac >/dev/null
+
+pkill -RTMIN+10 dwmblocks &

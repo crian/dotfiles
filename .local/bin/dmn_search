@@ -1,0 +1,8 @@
+#!/bin/sh
+
+browser="chromium --new-window"
+engine=~/.config/search/engine
+
+url=$(sort $engine | sed 's/:.*//' | dmenu -i -p "Search Engine" | xargs -I % grep "%:" $engine | sed 's/.*://')
+
+xsel -o | dmenu -p "Search:" | xargs -I {} $browser "https://$url"{}

@@ -1,0 +1,26 @@
+#
+# ~/.zaliases
+#
+
+alias v="$EDITOR"
+alias sz="source ~/.config/zsh/.zshrc"
+alias ls="exa -h --icons --color=auto --group-directories-first"
+alias la="ls -a"
+alias ll="ls -la"
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias cp="cp -i"
+alias df="df -h"
+alias less="bat --pager "$PAGER $LESS" --style=snip,header --color=always"
+alias c="clear"
+alias pac="sudo pacman --color=auto"
+alias yu="yay -Syu --devel --timeupdate"
+alias merge="xrdb -merge ~/.config/X11/Xresources"
+alias mirrors="sudo reflector --score 100 --fastest 25 --sort rate --save /etc/pacman.d/mirrorlist --verbose"
+alias temp="watch sensors"
+alias dots="/usr/bin/git --git-dir=/home/crian/.dotfiles/ --work-tree=/home/crian"
+alias wttr="curl -s wttr.in/Jülich"
+alias e="exit"
+alias mpv="swallow mpv"
+alias sxiv="swallow sxiv"
+alias zathura="swallow zathura"

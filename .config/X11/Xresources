@@ -1,0 +1,26 @@
+!------------
+! Xft config
+!------------
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcdfilter
+
+!--------------
+! Color Scheme
+!--------------
+
+#include "colors/gruvbox-dark"
+
+!-----------
+! st config
+!-----------
+
+st*font: JetBrains Mono:size=9:antialias=true:autohint=true
+st*fontalt0: Symbols Nerd Font:size=9:antialias=true:autohint=true
+st*fontalt1: Symbola:size=9:antialias=true:autohint=true
+st*borderpx: 10

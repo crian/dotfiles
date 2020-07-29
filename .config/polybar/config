@@ -1,0 +1,311 @@
+[colors]
+bg = ${xrdb:background}
+fg = ${xrdb:foreground}
+black = ${xrdb:color0}
+black-alt = ${xrdb:color8}
+red = ${xrdb:color1}
+red-alt = ${xrdb:color9}
+green = ${xrdb:color2}
+green-alt = ${xrdb:color10}
+yellow = ${xrdb:color3}
+yellow-alt = ${xrdb:color11}
+blue = ${xrdb:color4}
+blue-alt = ${xrdb:color12}
+magenta = ${xrdb:color5}
+magenta-alt = ${xrdb:color13}
+cyan = ${xrdb:color6}
+cyan-alt = ${xrdb:color14}
+white = ${xrdb:color7}
+white-alt = ${xrdb:color15}
+bg-alt = #32302f
+
+[fonts]
+font-0 = "JetBrains Mono:size=9:antialias=true:autohint=false;2"
+font-1 = "Symbols Nerd Font:size=9:antialias=true:autohint=false;2"
+font-2 = "siji:size=11:antialias=true:autohint=true;2" 
+
+
+[bar/bspwmbar]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 22
+fixed-center = true
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+overline-size = 2
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+inherit = fonts
+
+modules-left = bspwm xwindow
+modules-center =
+modules-right = network battery xbacklight volume date time
+
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = false
+
+
+[bar/yaxwmbar]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 22
+fixed-center = true
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+overline-size = 2
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+inherit = fonts
+
+modules-left = xworkspaces layout xwindow
+modules-center =
+modules-right = network battery xbacklight volume date time
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+
+format = <label-state><label-mode>
+
+label-focused = %name%
+label-focused-padding = 1
+label-focused-foreground = ${colors.blue}
+label-focused-background = ${colors.bg-alt}
+label-focused-overline = ${colors.blue}
+
+label-occupied = %name%
+label-occupied-padding = 1
+label-occupied-background = ${colors.bg}
+label-occupied-foreground = ${colors.blue}
+
+label-urgent = %name%
+label-urgent-padding = 1
+label-urgent-background = ${colors.bg}
+label-urgent-foreground = ${colors.red-alt}
+
+label-empty = %name%
+label-empty-padding = 1
+label-empty-background = ${colors.bg}
+label-empty-foreground = ${colors.fg}
+
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+pin-workspaces = false
+
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+fuzzy-match = true
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+icon-6 = 7;
+icon-7 = 8;
+icon-8 = 9;
+icon-9 = 10;
+icon-default =
+
+format = <label-state>
+format-padding = 0
+
+label-monitor = %name%
+
+label-active = %icon%
+label-active-foreground = ${colors.blue}
+label-active-background = ${colors.bg-alt}
+label-active-overline = ${colors.blue}
+
+label-occupied = %icon%
+label-occupied-foreground = ${colors.blue}
+label-occupied-background = ${colors.bg}
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.bg}
+
+label-empty = %icon%
+label-empty-background = ${colors.bg}
+label-empty-foreground = ${colors.fg}
+
+label-active-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+label-empty-padding = 1
+
+
+[module/layout]
+type = custom/script
+exec = yaxwmlayout
+label = %output%
+label-font = 3
+interval = 4
+format-padding = 1
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:60:...%
+format-foreground = ${colors.green}
+format-padding = 1
+
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <label>
+label = %percentage%%
+
+format-prefix = " "
+format-prefix-foreground = ${colors.blue-alt}
+format-background = ${colors.bg}
+format-padding = 1
+
+
+[module/network]
+type = internal/network
+interface = wlp3s0
+interval = 10
+
+format-connected-padding = 1
+format-disconnected-padding = 1
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+format-connected-prefix = "直 "
+format-connected-prefix-foreground = ${colors.magenta}
+format-disconnected-prefix = "睊 "
+format-disconnected-prefix-foreground = ${colors.magenta}
+format-connected-background = ${colors.bg}
+format-disconnected-background = ${colors.bg}
+
+label-connected = %essid%
+label-disconnected = Down
+
+
+[module/time]
+type = internal/date
+interval = 60
+label =  %time%
+
+time = %H:%M
+
+format-prefix = " "
+format-prefix-foreground = ${colors.green}
+format-padding = 1
+format-background = ${colors.bg}
+
+[module/date]
+type = internal/date
+interval = 60
+label =  %date%
+
+date = %d-%m-%Y
+
+format-prefix = " "
+format-prefix-foreground = ${colors.red}
+format-padding = 1
+format-background = ${colors.bg}
+
+
+[module/volume]
+type = internal/pulseaudio
+format-volume = <ramp-volume><label-volume>
+format-muted = <label-muted>
+ramp-volume-foreground = ${colors.cyan}
+format-volume-padding = 1
+format-muted-padding = 1
+format-volume-background = ${colors.bg}
+format-muted-background = ${colors.bg}
+
+label-muted = Muted
+format-muted-prefix = "婢 "
+format-muted-prefix-foreground = ${colors.cyan}
+ramp-volume-0 = " "
+ramp-volume-1 = "墳 "
+ramp-volume-2 = " "
+
+
+[module/battery]
+type = internal/battery
+poll-interval = 1
+label-padding = 30
+
+battery = BAT0
+adapter = AC
+full-at = 98
+bar-capacity-width = 10
+
+format-charging    = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full        = <ramp-capacity> <label-full>
+
+format-full-padding = 1
+format-charging-padding = 1
+format-discharging-padding = 1
+
+format-charging-background = ${colors.bg}
+format-full-background = ${colors.bg}
+format-discharging-background = ${colors.bg}
+
+ramp-capacity-foreground = ${colors.yellow}
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
+ramp-capacity-5 = ""
+ramp-capacity-6 = ""
+ramp-capacity-7 = ""
+ramp-capacity-8 = ""
+ramp-capacity-9 = ""
+
+animation-charging-foreground = ${colors.yellow-alt}
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
+animation-charging-5 = ""
+animation-charging-6 = ""
+animation-charging-framerate = 750
+
+; vim:ft=dosini

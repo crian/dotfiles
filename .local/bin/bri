@@ -1,0 +1,11 @@
+#!/bin/sh
+
+up() { xbacklight -inc 10 ;}
+down() { xbacklight -dec 10 ;}
+
+case "$1" in
+	up) up ;;
+	down) down ;;
+esac >/dev/null
+
+pkill -RTMIN+11 dwmblocks &

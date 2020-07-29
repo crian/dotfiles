@@ -1,0 +1,27 @@
+#!/bin/sh
+
+sxhkd -c $HOME/.config/sxhkd/bspwm-sxhkdrc &
+bspwmbar &
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+bspc config border_width            2
+bspc config window_gap              6
+bspc config top_padding             20
+bspc config bottom_padding          0
+bspc config left_padding            0
+bspc config right_padding           0
+bspc config split_ratio             0.50
+bspc config single_monocle          true
+bspc config borderless_monocle      true
+bspc config gapless_monocle         true
+bspc config focus_follows_pointer   true
+bspc config pointer_follows_focus   true
+
+bspc config automatic_scheme        alternate
+bspc config initial_polarity        second_child
+
+bspc config normal_border_color     "#32302f"
+bspc config focused_border_color    "#458588"
+
+bspc rule -a floatst state=floating
