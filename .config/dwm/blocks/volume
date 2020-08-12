@@ -2,14 +2,14 @@
 
 mute="$(pulsemixer --get-mute)"
 vol="$(pulsemixer --get-volume | awk '{print $1}')"
+
 if [ $mute = 1 ]; then
-    printf "^c#8ec07c^ ^d^Muted"
-elif [ $mute = 0 ]; then
+    printf "^c#8ec07c^婢 ^d^Muted"
+else
     case ${vol%?} in
-           10) i='' ;;
-        [6-9]) i='' ;;
-        [3-5]) i='' ;;
-            *) i=''
+        [6-9]|10) i='' ;;
+           [3-5]) i='墳' ;;
+               *) i=''
     esac
     printf "%s%%\n" "^c#689d6a^$i^d^ $vol"
 fi

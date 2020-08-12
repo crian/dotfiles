@@ -1,4 +1,5 @@
 #!/bin/sh
 
 time="$(date "+%H:%M")"
-printf "%s\n" "^c#98971a^ ^d^$time"
+
+printf "%s\n" "^c#98971a^ ^d^$time"

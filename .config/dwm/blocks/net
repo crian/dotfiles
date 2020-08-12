@@ -4,11 +4,13 @@ ethstatus="$(cat /sys/class/net/enp0s25/operstate)"
 wifistatus="$(cat /sys/class/net/wlp3s0/operstate)"
 wifissid="$(nmcli -t -f NAME connection show --active)"
 wifiperc="$(grep "^\s*w" /proc/net/wireless | awk '{ print int($3 * 100 / 70) "%" }')"
+
 if [ $ethstatus = "up" ]; then
-    netstatus="^c#b16286^ ^d^Ether"
+    netstatus="^c#b16286^ ^d^Ether"
 elif [ $wifistatus = "up" ]; then
-    netstatus="^c#b16286^ ^d^$wifiperc"
+    netstatus="^c#b16286^直 ^d^$wifiperc"
 else
-    netstatus="^c#b16286^ ^d^Down"
+    netstatus="^c#b16286^睊 ^d^Down"
 fi
+
 printf "%s\n" "$netstatus"

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-dwmblocks &
+pidof -s dwmblocks >/dev/null || dwmblocks &
