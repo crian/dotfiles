@@ -31,6 +31,6 @@ clipmenud &
 xautolock -time 30 -locker slock &
 
 # start wm
-#exec bspwm 2> ~/.cache/bspwm.log
-exec yaxwm
-#exec ~/.local/src/yaxwm/yaxwm > ~/.local/share/xorg/yaxwm.log 2>&1
+while true; do
+    dwm 2> ~/.cache/dwm.log
+done
