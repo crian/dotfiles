@@ -38,13 +38,17 @@ super + shift + p
 super + shift + w
     $BROWSER
 
+# spotify
+super + shift + s
+    spoti
+
 # terminal filemanager
 super + shift + f
     st -e lf
 
 # screenshot and selection capture
 {_,super + }@Print
-    scrot {_,-s}
+    dmn_scr
 
 # brightness up/down
 XF86MonBrightness{Up,Down}
@@ -92,7 +96,7 @@ super + {q,space,Tab}
     yaxwm -c win {full,fakefull}
 
 # toggle floating or sticky
-super + shift + {space,s}
+super + ctrl + {space,s}
     yaxwm -c win {float,stick}
 
 # move window, signed (+/-) for relative changes
@@ -120,23 +124,18 @@ super + {_,shift + ,ctrl + }{comma,period,backslash}
 super + {t,m,g,s,d,f}
     yaxwm -c set layout {tile,mono,grid,spiral,dwindle,none}
 
-# toggle padding on the active workspace
-super + ctrl + p
-    yaxwm -c print pad | awk 'BEGIN\{ i = 0 \} \{ if ($2 != 0) i++ \} END\{ if (i) exit 1 \}' \
-        && yaxwm -c set pad l=400 r=400 t=100 b=100 || yaxwm -c set pad l=0 r=0 t=0 b=0
-
 # change number of windows in master or first stack
 super + {_,shift + }{i,d}
     yaxwm -c set {master,stack} {+1,-1}
 
 # change gap width
-super + {plus,minus,apostrophe}
-    yaxwm -c set gap width {+5,-5,reset}
+super + {plus,minus}
+    yaxwm -c set gap width {+5,-5}
 
 # change border width (total)
-super + ctrl + {plus,minus,apostrophe}
-    yaxwm -c set border width {+1,-1,reset}
+super + ctrl + {plus,minus}
+    yaxwm -c set border width {+1,-1}
 
 # change outer border width (double border)
-super + ctrl + shift + {plus,minus,apostrophe}
-    yaxwm -c set border outer_width {+1,-1,reset}
+super + ctrl + shift + {plus,minus}
+    yaxwm -c set border outer_width {+1,-1}

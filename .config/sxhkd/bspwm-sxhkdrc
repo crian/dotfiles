@@ -169,7 +169,7 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
     pulsemixer --{change-volume +5 --unmute,change-volume -5 --unmute,toggle-mute}
 
 # media play/stop/next/previous
-XF86Audio{Play,Stop,Next,Previous}
+XF86Audio{Play,Stop,Next,Prev}
     playerctl {play-pause,stop,next,previous}
 
 #
