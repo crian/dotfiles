@@ -22,7 +22,7 @@ logfile="$HOME/.yaxwmrc.log"
 
 	# default workspace values used when allocating new workspaces
 	# can be applied to all existing workspaces when passed 'apply'
-	yaxwm -c set ws=default apply layout=tile master=1 stack=4 gap=6 msplit=0.50 ssplit=0.50
+	yaxwm -c set ws=default apply layout=tile master=1 stack=3 gap=6 msplit=0.50 ssplit=0.50
 
 	# rename workspace(s)
 	#yaxwm -c set ws=1 name="1" ws=2 name="2"
@@ -31,9 +31,9 @@ logfile="$HOME/.yaxwmrc.log"
 	#yaxwm -c set ws=3 layout=grid
 
 	# use some padding and gaps on the last workspace
-	last=$(yaxwm -c print numws)
-	yaxwm -c set ws="$last" pad left=200 right=200 top=100 bottom=100
-	yaxwm -c set ws="$last" gap width=50
+	last=$(awk '/^numws:/ {print $2}' "$YAXWM_STATUS")
+	yaxwm -c set ws="$last" pad left=100 right=100 top=50 bottom=50
+	yaxwm -c set ws="$last" gap width=25
 
 
 	# global settings
