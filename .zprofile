@@ -22,6 +22,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export TERMINFO="$XDG_DATA_HOME/terminfo"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export GOPATH="$XDG_DATA_HOME/go"
 export LESSHISTFILE=-
 
 # LESS config
