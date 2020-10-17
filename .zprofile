@@ -45,7 +45,7 @@ export FZF_DEFAULT_OPTS='
     --ansi --border --height 100%
     --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
     --color info:#83a598,prompt:#a89984,pointer:#83a598,marker:#fe8019,spinner:#fabd2f,header:#665c54
-    --preview "bat --color always --theme="base16" {}" --preview-window :70%'
+    --preview "bat --color always --theme="base256" {}" --preview-window :70%'
 
 # Custom lf icons
 if [ -f $HOME/.config/lf/icons ]; then
