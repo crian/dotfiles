@@ -50,6 +50,18 @@ super + shift + s
 super + alt + Escape
     pkill -USR1 -x sxhkd
 
+# brightness up/down
+XF86MonBrightness{Up,Down}
+    xbacklight {-inc,-dec} 10%
+
+# volume up/down/mute
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    pulsemixer --{change-volume +5 --unmute,change-volume -5 --unmute,toggle-mute}
+
+# media play/stop/next/previous
+XF86Audio{Play,Stop,Next,Prev}
+    playerctl {play-pause,stop,next,previous}
+
 #
 # bspwm hotkeys
 #
@@ -155,22 +167,6 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
-
-#
-#
-#
-
-# brightness up/down
-XF86MonBrightness{Up,Down}
-    xbacklight {-inc,-dec} 10%
-
-# volume up/down/mute
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-    pulsemixer --{change-volume +5 --unmute,change-volume -5 --unmute,toggle-mute}
-
-# media play/stop/next/previous
-XF86Audio{Play,Stop,Next,Prev}
-    playerctl {play-pause,stop,next,previous}
 
 #
 # bsp-layout
