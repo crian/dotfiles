@@ -22,7 +22,7 @@ bg-alt = #32302f
 [fonts]
 font-0 = "JetBrains Mono:size=9:antialias=true:autohint=false;2"
 font-1 = "Symbols Nerd Font:size=9:antialias=true:autohint=false;2"
-font-2 = "siji:size=11:antialias=true:autohint=true;2" 
+font-2 = "siji:size=11:antialias=true:autohint=true;2"
 
 
 [bar/bspwmbar]
@@ -57,35 +57,6 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 enable-ipc = false
-
-
-[bar/yaxwmbar]
-monitor = ${env:MONITOR:}
-width = 100%
-height = 22
-fixed-center = true
-
-background = ${colors.bg}
-foreground = ${colors.fg}
-
-overline-size = 2
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 0
-module-margin-right = 0
-
-inherit = fonts
-
-modules-left = xworkspaces layout xwindow
-modules-center =
-modules-right = network battery xbacklight volume date time
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-enable-ipc = true
 
 
 [module/bspwm]
@@ -132,65 +103,6 @@ label-empty = %name%
 label-empty-padding = 1
 label-empty-background = ${colors.bg}
 label-empty-foreground = ${colors.fg}
-
-
-[module/xworkspaces]
-type = internal/xworkspaces
-
-pin-workspaces = false
-
-enable-click = true
-enable-scroll = true
-reverse-scroll = true
-fuzzy-match = true
-
-icon-0 = 1;
-icon-1 = 2;
-icon-2 = 3;
-icon-3 = 4;
-icon-4 = 5;
-icon-5 = 6;
-icon-6 = 7;
-icon-7 = 8;
-icon-8 = 9;
-icon-9 = 10;
-icon-default =
-
-format = <label-state>
-format-padding = 0
-
-label-monitor = %name%
-
-label-active = %icon%
-label-active-foreground = ${colors.blue}
-label-active-background = ${colors.bg-alt}
-label-active-overline = ${colors.blue}
-
-label-occupied = %icon%
-label-occupied-foreground = ${colors.blue}
-label-occupied-background = ${colors.bg}
-
-label-urgent = %icon%
-label-urgent-foreground = ${colors.red}
-label-urgent-background = ${colors.bg}
-
-label-empty = %icon%
-label-empty-background = ${colors.bg}
-label-empty-foreground = ${colors.fg}
-
-label-active-padding = 1
-label-urgent-padding = 1
-label-occupied-padding = 1
-label-empty-padding = 1
-
-
-[module/layout]
-type = custom/script
-exec = yaxwmlayout
-label = %output%
-label-font = 3
-interval = 1
-format-padding = 1
 
 
 [module/xwindow]
@@ -244,6 +156,7 @@ format-prefix = " "
 format-prefix-foreground = ${colors.green}
 format-padding = 1
 format-background = ${colors.bg}
+
 
 [module/date]
 type = internal/date

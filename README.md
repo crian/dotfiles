@@ -9,7 +9,7 @@
 - Machine: `thinkpad x220`
 - Hostname: `ronin`
 - Operating System: `arch`
-- Window Manager: `bspwm, dwm, yaxwm`
+- Window Manager: `bspwm, dwm`
 - Shell: `zsh`
 - Terminal Emulator: `st`
 - File Manager: `lf`
