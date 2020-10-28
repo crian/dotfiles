@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sxhkd -c $HOME/.config/sxhkd/bspwm-sxhkdrc &
+sxhkd &
 bspwmbar &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
