@@ -24,7 +24,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
@@ -67,14 +67,11 @@ set conceallevel=2                                      " set this so we wont br
 set splitright                                          " open vertical split to the right
 set splitbelow                                          " open horizontal split to the bottom
 set emoji                                               " enable emojis
-let g:indentLine_setConceal = 0                         " actually fix the annoying markdown links conversion
 au BufEnter * set fo-=c fo-=r fo-=o                     " stop annoying auto commenting on new lines
 set history=1000                                        " history limit
 set backspace=indent,eol,start                          " sensible backspacing
 set undofile                                            " enable persistent undo
-set undodir=/tmp//                                      " undo temp file directory
-set backupdir=/tmp//                                    " backup temp file directory
-set directory=/tmp//                                    " swap temp file directory
+set undodir=/tmp                                        " undo temp file directory
 set foldlevel=0                                         " open all folds by default
 set inccommand=nosplit                                  " visual feedback while substituting
 set showtabline=2                                       " always show tabline
@@ -117,7 +114,7 @@ hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 "-----------------
 
 " built in plugins
-let loaded_netrw = 0                                    " disable netew
+let g:loaded_netrw = 0                                  " disable netew
 let g:omni_sql_no_default_maps = 1                      " disable sql omni completion
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
@@ -177,17 +174,17 @@ let g:startify_lists = [
     \ { 'type': 'files'     },
     \ { 'type': 'sessions'  },
     \ { 'type': 'bookmarks' },
-    \ { 'type': 'commands' },
+    \ { 'type': 'commands'  },
     \ ]
 " bookmark examples
 let  g:startify_bookmarks =  [
-    \ {'v': '~/.config/nvim'}
+    \ {'v': '~/.config/nvim/init.vim'},
     \ ]
 " custom commands
 let g:startify_commands = [
-    \ {'ch':  ['Health Check', ':checkhealth']},
+    \ {'ch': ['Health Check', ':checkhealth']},
     \ {'ps': ['Plugins status', ':PlugStatus']},
-    \ {'pu': ['Update vim plugins',':PlugUpdate | PlugUpgrade']},
+    \ {'up': ['Update vim plugins',':PlugUpdate | PlugUpgrade']},
     \ {'uc': ['Update coc Plugins', ':CocUpdate']},
     \ {'h':  ['Help', ':help']},
     \ ]
@@ -437,9 +434,9 @@ xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<
 nmap <leader>a :CocCommand actions.open<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-" fugitive mappings
+" fugitive
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gb :Gblame<CR>
 
-" Vimagit
+" vimagit
 map <leader>m :Magit<CR>
