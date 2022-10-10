@@ -1,9 +1,9 @@
 #!/bin/sh
 
-mute="$(pulsemixer --get-mute)"
-vol="$(pulsemixer --get-volume | awk '{print $1}')"
+mute="$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')"
+vol="$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')"
 
-if [ $mute = 1 ]; then
+if [ $mute == yes ]; then
     printf "^c#8ec07c^婢 ^d^Muted"
 else
     case ${vol%?} in
@@ -11,5 +11,5 @@ else
            [3-5]) i='墳' ;;
                *) i=''
     esac
-    printf "%s%%\n" "^c#689d6a^$i^d^ $vol"
+    printf "%s" "^c#689d6a^$i^d^ $vol"
 fi
