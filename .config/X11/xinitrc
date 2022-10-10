@@ -30,6 +30,11 @@ clipmenud &
 # start xautolock with slock
 xautolock -time 30 -locker slock &
 
+# dbus session
+if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+       eval `dbus-launch --sh-syntax --exit-with-session`
+fi
+
 # start wm
 while true; do
     dwm 2> ~/.cache/dwm.log
