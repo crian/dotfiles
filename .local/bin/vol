@@ -1,8 +1,8 @@
 #!/bin/sh
 
-mute() { pulsemixer --toggle-mute ;}
-up() { pulsemixer --change-volume +5 --unmute ;}
-down() { pulsemixer --change-volume -5 --unmute ;}
+mute() { pamixer -t ;}
+up() { pamixer -i 5 -u ;}
+down() { pamixer -d 5 -u ;}
 
 case "$1" in
 	mute) mute ;;
