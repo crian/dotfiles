@@ -10,12 +10,14 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 export TERMINAL="st"
 export PAGER="less"
-export BROWSER="chromium"
+export BROWSER="librewolf"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$XDG_DATA_HOME/history"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
@@ -23,6 +25,8 @@ export TERMINFO="$XDG_DATA_HOME/terminfo"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export GOPATH="$XDG_DATA_HOME/go"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export LESSHISTFILE=-
 
 # LESS config
