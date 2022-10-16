@@ -10,7 +10,7 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 export TERMINAL="st"
 export PAGER="less"
-export BROWSER="librewolf"
+export BROWSER="brave"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
