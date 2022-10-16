@@ -40,7 +40,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance            title       tags mask     isfloating   monitor */
 	{ NULL,       "chromium",         NULL,       1 << 1,       0,           -1 },
-	{ NULL,       "open.spotify.com", NULL,       1 << 8,       0,           -1 },
+	{ NULL,       "Spotify",          NULL,       1 << 8,       0,           -1 },
 	{ "floatst",  NULL,               NULL,       0,            1,           -1 },
 };
 
@@ -48,6 +48,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #include "bstack.c"
 static const Layout layouts[] = {
@@ -71,14 +72,13 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2]            = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "70x20", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 #include <X11/XF86keysym.h>
-static Key keys[] = {
+static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
@@ -95,8 +95,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Left,   spawn,          SHCMD("playerctl previous") },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("pcmanfm") },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("$BROWSER") },
-	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("st -e lf") },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("spoti") },
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("st -e lfub") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("spotify") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY|ControlMask,           XK_j,      shiftview,      {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_k,      shiftview,      {.i = -1 } },
@@ -129,7 +129,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_plus,   setgaps,        {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_plus,   setgaps,        {.i = 0 } },
-	{ MODKEY|ShiftMask,             XK_Escape, quit,           {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -152,7 +151,7 @@ static Key keys[] = {
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
-static Button buttons[] = {
+static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
